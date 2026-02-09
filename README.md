@@ -8,12 +8,13 @@
   <a href="https://discord.gg/PzyFgtPXfh">Discord (channel: # texnative)</a>
 </p>
 
+> Create professional business reports, manuals, quotations, letters, and more using plain understandable Markdown.
+
 # TeXnative PDF Format
 
 **_Quarto PDF format Extension_**
 
-Modern customizable Business Document Format for creating clean Reports,
-Quotations, Letters etc...
+Elegant documents with dark/light themes, custom branding, and advanced table styling.
 
 ## Installing
 
@@ -21,16 +22,16 @@ Quotations, Letters etc...
 quarto use template wearetechnative/texnative
 ```
 
-This will install the extension and create an example qmd file that you can use
-as a starting place for your article.
+This installs the extension and creates an starter temmplate-qmd file to kickoff your document.
 
 ## Features
 
-- modern business document
-- white and dark background
-- custom letterhead en frontpage images
-- filter to create modern looking tables
-- advanced styling properties for markdown tables
+- Modern business document for many purposes.
+- Light and dark example themes.
+- Customizable letterhead.
+- Customizable cover page.
+- Including a Quarto filter for advanced table styling.
+- Actively maintained.
 
 ![](./media/Screenshot-TexNative.png)
 
