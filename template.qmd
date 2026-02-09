@@ -35,6 +35,32 @@ cover_illustration_img: cover-ill.png            # path to cover page illustrati
 cover_illustration_img_darkbg: cover-ill.png     # path to cover page illustration image for dark background
 disable_justify: true                            # true: justify left and right, false: only justify left;
 
+data_classification_label:                       # render a confidential label
+  level: confidential
+
+  levels:
+    confidential:
+      bgcolor: '#ff0000'
+      txtcolor: '#000000'
+      txt: CONFIDENTIAL
+
+    internal:
+      bgcolor: '#ee7d2f'
+      txtcolor: '#000000'
+      txt: INTERNAL
+
+    public:
+      bgcolor: '#70ac45'
+      txtcolor: '#000000'
+      txt: PUBLIC
+
+  border-radius: 2pt
+  txtsize: small
+  width: 40mm
+  height: 10mm
+  top: 15mm
+  left: 20mm
+
 ---
 
 # Parties
@@ -57,11 +83,11 @@ Here are some text features. Links are working and should have disguished [color
 
 # Tables
 
-| Feature       | Description                    | Status       |
-|:--------------|:------------------------------:|-------------:|
-| **Parser**    | Handles *all* input formats    | `complete`   |
-| **Exporter**  | Outputs to **PDF** and *HTML*, and any future format  | `in progress`|
-| Validator     | Check `syntax` errors          | _pending_    |
+| Feature      |                     Description                      |        Status |
+|:-------------|:----------------------------------------------------:|--------------:|
+| **Parser**   |             Handles *all* input formats              |    `complete` |
+| **Exporter** | Outputs to **PDF** and *HTML*, and any future format | `in progress` |
+| Validator    |                Check `syntax` errors                 |     _pending_ |
 
 : Advanced tables with many styling properties {tbl-cell-padding="20" tbl-border-width="0" tbl-body-bgcolor="80,50,20" tbl-colwidths="[20,20,25]"}
 

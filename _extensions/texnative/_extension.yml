@@ -5,6 +5,7 @@ contributes:
 
   filters:
     - texnative-pre.lua
+    - texnative_dcl.lua
     - texnative.lua
 
   formats:
