@@ -1,3 +1,13 @@
+
+<p align="center">
+    <img width="300" alt="logo TeXnative" src="./media/TeXnative-logo.svg">
+</p>
+
+<p align="center">
+  <a href="./docs">Documentation</a> ·
+  <a href="https://discord.gg/PzyFgtPXfh">Discord (channel: # texnative)</a>
+</p>
+
 # TeXnative PDF Format
 
 **_Quarto PDF format Extension_**
