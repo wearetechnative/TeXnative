@@ -1,0 +1,397 @@
+[
+  {
+    "objectID": "getting-started.html",
+    "href": "getting-started.html",
+    "title": "Getting Started",
+    "section": "",
+    "text": "Get up and running with TeXnative in minutes.",
+    "crumbs": [
+      "Home",
+      "Getting Started",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#installation",
+    "href": "getting-started.html#installation",
+    "title": "Getting Started",
+    "section": "Installation",
+    "text": "Installation\nInstall TeXnative using the Quarto template command:\nquarto use template wearetechnative/texnative\nThis command:\n\nDownloads the TeXnative extension to _extensions/texnative/\nCreates a starter template.qmd file",
+    "crumbs": [
+      "Home",
+      "Getting Started",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#basic-usage",
+    "href": "getting-started.html#basic-usage",
+    "title": "Getting Started",
+    "section": "Basic Usage",
+    "text": "Basic Usage\nAdd the following to your document’s YAML front matter:\n---\ntitle: My Document\nformat: texnative-pdf\nfilters:\n  - texnative\n---\nThen render your document:\nquarto render mydocument.qmd",
+    "crumbs": [
+      "Home",
+      "Getting Started",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#document-metadata",
+    "href": "getting-started.html#document-metadata",
+    "title": "Getting Started",
+    "section": "Document Metadata",
+    "text": "Document Metadata\nAdd optional metadata for the cover page:\n---\ntitle: Project Proposal\nsubtitle: Q4 Planning Document\nauthor: Jane Dean\ndate: last-modified\ntype: Report\ndocument_version: 1\ndocument_number: PROP-2024-001\n\nformat: texnative-pdf\nfilters:\n  - texnative\n---",
+    "crumbs": [
+      "Home",
+      "Getting Started",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#theme-selection",
+    "href": "getting-started.html#theme-selection",
+    "title": "Getting Started",
+    "section": "Theme Selection",
+    "text": "Theme Selection\nTeXnative includes light and dark themes:\n\nLight Theme (Default)\ndark_background: false\n\n\n\nLight theme example\n\n\n\n\nDark Theme\ndark_background: true\n\n\n\nDark theme example",
+    "crumbs": [
+      "Home",
+      "Getting Started",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#common-options",
+    "href": "getting-started.html#common-options",
+    "title": "Getting Started",
+    "section": "Common Options",
+    "text": "Common Options\n---\nformat: texnative-pdf\nfilters:\n  - texnative\n\n# Theme\ndark_background: true\n\n# Document structure\ntoc: true\ntoc-title: Contents\ncover_page: true\nletterhead: true\npage_numbers: true\n\n# Layout\npapersize: a4\n---",
+    "crumbs": [
+      "Home",
+      "Getting Started",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#custom-branding",
+    "href": "getting-started.html#custom-branding",
+    "title": "Getting Started",
+    "section": "Custom Branding",
+    "text": "Custom Branding\nReplace the default letterhead and cover images with your own:\nletterhead_img: path/to/letterhead.png\nletterhead_img_darkbg: path/to/letterhead-dark.png\ncover_illustration_img: path/to/cover.jpg\ncover_illustration_img_darkbg: path/to/cover-dark.jpg\nSee Configuration Reference for all available options.",
+    "crumbs": [
+      "Home",
+      "Getting Started",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#next-steps",
+    "href": "getting-started.html#next-steps",
+    "title": "Getting Started",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nConfiguration Reference - All YAML options\nTable Formatting - Professional table styling\nData Classification Labels - Security labels on every page",
+    "crumbs": [
+      "Home",
+      "Getting Started",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "configuration.html",
+    "href": "configuration.html",
+    "title": "Configuration Reference",
+    "section": "",
+    "text": "This page documents all YAML front matter options available in TeXnative.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Configuration Reference"
+    ]
+  },
+  {
+    "objectID": "configuration.html#document-metadata",
+    "href": "configuration.html#document-metadata",
+    "title": "Configuration Reference",
+    "section": "Document Metadata",
+    "text": "Document Metadata\nThese values appear on the cover page when enabled:\nsubtitle: Agreement for a typical business case\nauthor: Jane Dean\ndate: last-modified\ntype: Report\ndocument_version: 1\ndocument_number: ABC013",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Configuration Reference"
+    ]
+  },
+  {
+    "objectID": "configuration.html#document-options",
+    "href": "configuration.html#document-options",
+    "title": "Configuration Reference",
+    "section": "Document Options",
+    "text": "Document Options\n# Document structure\ntoc: true                    # Show table of contents\ntoc-title: Contents          # Title for table of contents\ncover_page: true             # Generate cover page\nletterhead: true             # Use letterhead background\npage_numbers: true           # Show page numbers\nparagraph_numbers: true      # Show paragraph numbers before headers\n\n# Theme\ndark_background: true        # Use dark background with white text\n\n# Layout\npapersize: a4\ndisable_justify: false       # true = left-align only; false = justify both sides\n\n# Links\nurlcolor: magenta            # Color of URLs\nlinkcolor: magenta           # Color of markdown links\ncolorlinks: true             # Enable colored links",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Configuration Reference"
+    ]
+  },
+  {
+    "objectID": "configuration.html#custom-images",
+    "href": "configuration.html#custom-images",
+    "title": "Configuration Reference",
+    "section": "Custom Images",
+    "text": "Custom Images\nCustomize the letterhead and cover page with your own branding:\nletterhead_img: bgwhite.jpg              # Background for light theme\nletterhead_img_darkbg: bgdark.jpg        # Background for dark theme\ncover_illustration_img: cover-ill.png    # Cover illustration for light theme\ncover_illustration_img_darkbg: cover-ill.png  # Cover illustration for dark theme\n\nCorporate Identity Example\nFor custom corporate identity, create an internal extension with your assets:\nfilters:\n  - quarto\n  - texnative\nformat: texnative-pdf\ndark_background: true\ndisable_justify: true\ntoc-depth: 4\nletterhead_img: _extensions/your-org/branding/letterhead.png\nletterhead_img_darkbg: _extensions/your-org/branding/letterhead-dark.png\ncover_illustration_img: _extensions/your-org/branding/cover.jpg\ncover_illustration_img_darkbg: _extensions/your-org/branding/cover-dark.jpg",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Configuration Reference"
+    ]
+  },
+  {
+    "objectID": "configuration.html#table-styling-document-level",
+    "href": "configuration.html#table-styling-document-level",
+    "title": "Configuration Reference",
+    "section": "Table Styling (Document-Level)",
+    "text": "Table Styling (Document-Level)\nSet default table styling for all tables in the document:\ntable-header-bgcolor: \"255,128,0\"      # Header background (RGB or Hex)\ntable-body-bgcolor: \"255,240,220\"      # Body background (RGB or Hex)\ntable-header-txtcolor: \"255,255,255\"   # Header text color\ntable-body-txtcolor: \"0,0,0\"           # Body text color\ntable-border-color: \"0,0,0\"            # Border color\ntable-border-width: 0.4                # Border width in points (0 = none)\ntable-cell-padding: 6                  # Cell padding in points\ntable-alignment: left                  # Table alignment: left, center, right\nFor per-table styling options, see Table Formatting.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Configuration Reference"
+    ]
+  },
+  {
+    "objectID": "configuration.html#complete-example",
+    "href": "configuration.html#complete-example",
+    "title": "Configuration Reference",
+    "section": "Complete Example",
+    "text": "Complete Example\n---\ntitle: Project Proposal\nsubtitle: Q4 Planning Document\nauthor: Jane Dean\ndate: last-modified\ntype: Report\ndocument_version: 1\ndocument_number: PROP-2024-001\n\nformat: texnative-pdf\nfilters:\n  - texnative\n\ntoc: true\ntoc-title: Contents\ncover_page: true\nletterhead: true\ndark_background: true\npage_numbers: true\nparagraph_numbers: true\n\npapersize: a4\ncolorlinks: true\nurlcolor: cyan\nlinkcolor: cyan\n\ntable-header-bgcolor: \"71,29,0\"\ntable-body-bgcolor: \"109,43,0\"\n---",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Configuration Reference"
+    ]
+  },
+  {
+    "objectID": "data-classification-label.html",
+    "href": "data-classification-label.html",
+    "title": "Data Classification Labels",
+    "section": "",
+    "text": "Add security classification labels to your PDF documents. The label appears on every page, helping to indicate the sensitivity level of the document content.",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Data Classification Labels"
+    ]
+  },
+  {
+    "objectID": "data-classification-label.html#quick-start",
+    "href": "data-classification-label.html#quick-start",
+    "title": "Data Classification Labels",
+    "section": "Quick Start",
+    "text": "Quick Start\nAdd a classification label by including data_classification_label in your document’s YAML front matter:\ndata_classification_label:\n  level: confidential\n  levels:\n    confidential:\n      bgcolor: '#ff0000'\n      txtcolor: '#ffffff'\n      txt: CONFIDENTIAL",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Data Classification Labels"
+    ]
+  },
+  {
+    "objectID": "data-classification-label.html#configuration-options",
+    "href": "data-classification-label.html#configuration-options",
+    "title": "Data Classification Labels",
+    "section": "Configuration Options",
+    "text": "Configuration Options\n\nLevel Selection\nThe level field selects which classification to display:\ndata_classification_label:\n  level: internal          # Must match a key in 'levels'\n\n\nDefining Levels\nDefine one or more classification levels under levels:\ndata_classification_label:\n  levels:\n    confidential:\n      bgcolor: '#ff0000'   # Background color (hex)\n      txtcolor: '#ffffff'  # Text color (hex)\n      txt: CONFIDENTIAL    # Label text\n\n    internal:\n      bgcolor: '#ee7d2f'\n      txtcolor: '#000000'\n      txt: INTERNAL\n\n    public:\n      bgcolor: '#70ac45'\n      txtcolor: '#000000'\n      txt: PUBLIC\nEach level requires:\n\nbgcolor - Background color in hex format (e.g., '#ff0000')\ntxtcolor - Text color in hex format (e.g., '#ffffff')\ntxt - The text displayed in the label\n\n\n\nPosition and Size\nControl where the label appears and its dimensions:\ndata_classification_label:\n  level: confidential\n  levels: { ... }\n\n  # Position (from page edges)\n  top: 10mm              # Distance from top edge\n  left: 10mm             # Distance from left edge\n\n  # Dimensions\n  width: 35mm            # Label width\n  height: 8mm            # Label height\n\n  # Styling\n  txtsize: small         # Font size\n  border-radius: 3pt     # Corner rounding\n\nPosition Reference\nThe label is positioned using absolute coordinates from the page edges:\n+-----------------------------+\n|  ^ top                      |\n| &gt; +----------+              |\n|   |  LABEL   |              |\n|   +----------+              |\n| left                        |\n|                             |\n+-----------------------------+\n\n\nAvailable Text Sizes\nThe txtsize option accepts LaTeX font size commands:\n\ntiny\nscriptsize\nfootnotesize\nsmall (default)\nnormalsize\nlarge\n\n\n\n\nDefault Values\n\n\n\nOption\nDefault\n\n\n\n\nwidth\n30mm\n\n\nheight\n8mm\n\n\ntop\n10mm\n\n\nleft\n10mm\n\n\ntxtsize\nsmall\n\n\nborder-radius\n2pt",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Data Classification Labels"
+    ]
+  },
+  {
+    "objectID": "data-classification-label.html#global-configuration",
+    "href": "data-classification-label.html#global-configuration",
+    "title": "Data Classification Labels",
+    "section": "Global Configuration",
+    "text": "Global Configuration\nDefine classification levels once in _quarto.yml and reference them in individual documents:\n**_quarto.yml:**\ndata_classification_label:\n  levels:\n    confidential:\n      bgcolor: '#ff0000'\n      txtcolor: '#ffffff'\n      txt: CONFIDENTIAL\n    internal:\n      bgcolor: '#ee7d2f'\n      txtcolor: '#000000'\n      txt: INTERNAL\n    public:\n      bgcolor: '#70ac45'\n      txtcolor: '#000000'\n      txt: PUBLIC\n\n  # Default styling\n  width: 35mm\n  height: 8mm\n  top: 10mm\n  left: 10mm\n  txtsize: small\n  border-radius: 3pt\ndocument.qmd:\ndata_classification_label:\n  level: confidential\nThis approach ensures consistent label definitions across all documents in your project.",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Data Classification Labels"
+    ]
+  },
+  {
+    "objectID": "data-classification-label.html#examples",
+    "href": "data-classification-label.html#examples",
+    "title": "Data Classification Labels",
+    "section": "Examples",
+    "text": "Examples\n\nMinimal Configuration\ndata_classification_label:\n  level: internal\n  levels:\n    internal:\n      bgcolor: '#ee7d2f'\n      txtcolor: '#000000'\n      txt: INTERNAL\n\n\nCustom Positioning\nPlace the label in the top-right corner:\ndata_classification_label:\n  level: confidential\n  levels:\n    confidential:\n      bgcolor: '#ff0000'\n      txtcolor: '#ffffff'\n      txt: CONFIDENTIAL\n  top: 10mm\n  left: 165mm              # A4 width (210mm) - label width - margin\n  width: 35mm\n\n\nLarge Label\ndata_classification_label:\n  level: confidential\n  levels:\n    confidential:\n      bgcolor: '#ff0000'\n      txtcolor: '#ffffff'\n      txt: CONFIDENTIAL\n  width: 50mm\n  height: 12mm\n  txtsize: normalsize\n  border-radius: 5pt\n\n\nCorporate Classification Scheme\ndata_classification_label:\n  level: restricted\n  levels:\n    top-secret:\n      bgcolor: '#000000'\n      txtcolor: '#ff0000'\n      txt: TOP SECRET\n    restricted:\n      bgcolor: '#8b0000'\n      txtcolor: '#ffffff'\n      txt: RESTRICTED\n    internal:\n      bgcolor: '#ff8c00'\n      txtcolor: '#000000'\n      txt: INTERNAL USE ONLY\n    public:\n      bgcolor: '#228b22'\n      txtcolor: '#ffffff'\n      txt: PUBLIC",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Data Classification Labels"
+    ]
+  },
+  {
+    "objectID": "data-classification-label.html#disabling-the-label",
+    "href": "data-classification-label.html#disabling-the-label",
+    "title": "Data Classification Labels",
+    "section": "Disabling the Label",
+    "text": "Disabling the Label\nTo disable the classification label, either:\n\nRemove the data_classification_label section entirely\nRemove or comment out the level field:\n\ndata_classification_label:\n  # level: confidential    # Commented out - no label shown\n  levels: { ... }",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Data Classification Labels"
+    ]
+  },
+  {
+    "objectID": "data-classification-label.html#technical-notes",
+    "href": "data-classification-label.html#technical-notes",
+    "title": "Data Classification Labels",
+    "section": "Technical Notes",
+    "text": "Technical Notes\n\nThe label uses TikZ for rendering and eso-pic for page placement\nLabels appear on all pages including the cover page (if enabled)\nColors must be specified in hex format with the # prefix\nPosition is calculated from the page edge, not the text margins",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Data Classification Labels"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html",
+    "href": "table-formatting.html",
+    "title": "Table Formatting",
+    "section": "",
+    "text": "TeXnative includes a custom table filter that renders professional tables with colored headers and proper formatting.",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html#basic-tables",
+    "href": "table-formatting.html#basic-tables",
+    "title": "Table Formatting",
+    "section": "Basic Tables",
+    "text": "Basic Tables\nTables support standard markdown syntax with rich text formatting:\n| Feature    | Description           | Status     |\n|:-----------|:---------------------:|------------|\n| **Parser** | Handles *all* formats | `complete` |\n| Exporter   | [Docs](https://x.com) | _pending_  |\n\nRich Text in Cells\nTable cells preserve inline formatting:\n\nBold: **bold text**\nItalic: *italic text*\nCode: `code`\nLinks: [text](https://example.com)",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html#column-widths",
+    "href": "table-formatting.html#column-widths",
+    "title": "Table Formatting",
+    "section": "Column Widths",
+    "text": "Column Widths\nControl column widths using tbl-colwidths in the caption. Values are percentages that should sum to 100 or less:\n| Name       | Description                          | Price |\n|:-----------|:-------------------------------------|------:|\n| Widget     | A useful widget for various tasks    |  9.99 |\n| Gadget     | An advanced gadget with features     | 19.99 |\n\n: Product catalog {tbl-colwidths=\"[20,60,20]\"}\nWhen no widths are specified, columns use automatic sizing.",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html#captions-and-labels",
+    "href": "table-formatting.html#captions-and-labels",
+    "title": "Table Formatting",
+    "section": "Captions and Labels",
+    "text": "Captions and Labels\nAdd captions and cross-reference labels using Quarto’s standard syntax:\n| Head 1 | Head 2 |\n|--------|--------|\n| A      | B      |\n\n: My table caption {#tbl-mytable}\nReference the table elsewhere with @tbl-mytable.",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html#custom-colors",
+    "href": "table-formatting.html#custom-colors",
+    "title": "Table Formatting",
+    "section": "Custom Colors",
+    "text": "Custom Colors\n\nDocument-Level Colors\nSet default colors in YAML front matter:\ntable-header-bgcolor: \"255,128,0\"    # RGB format\ntable-body-bgcolor: \"255,240,220\"    # RGB format\n\n\nPer-Table Colors\nOverride colors for individual tables in the caption:\n| Feature | Status |\n|---------|--------|\n| Auth    | Done   |\n| API     | WIP    |\n\n: Status table {tbl-header-bgcolor=\"0,100,200\" tbl-body-bgcolor=\"230,240,255\"}\n\n\nColor Formats\nColors can be specified as:\n\nRGB: \"255,128,0\"\nHex: \"#ff8000\" or \"ff8000\"\n\n\n\nDark Theme Defaults\nWhen dark_background: true is set, tables automatically use:\n\nHeader: #471d00 (dark orange-brown)\nBody: #6d2b00 (medium orange-brown)",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html#properties-reference",
+    "href": "table-formatting.html#properties-reference",
+    "title": "Table Formatting",
+    "section": "Properties Reference",
+    "text": "Properties Reference\n\nDocument-Level Properties (YAML)\n\n\n\n\n\n\n\n\n\n\nProperty\nFormat\nDefault (light)\nDefault (dark)\nDescription\n\n\n\n\ntable-header-bgcolor\nRGB or Hex\nTheme default\n#471d00\nHeader background\n\n\ntable-body-bgcolor\nRGB or Hex\nTransparent\n#6d2b00\nBody background\n\n\ntable-header-txtcolor\nRGB or Hex\nBlack\nWhite\nHeader text color\n\n\ntable-body-txtcolor\nRGB or Hex\nBlack\nWhite\nBody text color\n\n\ntable-border-color\nRGB or Hex\nBlack\n#8b4513\nBorder color\n\n\ntable-border-width\nNumber (pt)\n0.4\n0.4\nBorder width (0 = none)\n\n\ntable-cell-padding\nNumber (pt)\n6\n6\nCell padding\n\n\ntable-alignment\nleft/center/right\nleft\nleft\nTable placement\n\n\n\n\n\nPer-Table Properties (Caption)\n\n\n\nProperty\nFormat\nDescription\n\n\n\n\n#tbl-&lt;id&gt;\nLabel ID\nCross-reference label\n\n\ntbl-colwidths\n\"[n,n,...]\"\nColumn widths (percentages)\n\n\ntbl-header-bgcolor\nRGB or Hex\nHeader background\n\n\ntbl-body-bgcolor\nRGB or Hex\nBody background\n\n\ntbl-header-txtcolor\nRGB or Hex\nHeader text color\n\n\ntbl-body-txtcolor\nRGB or Hex\nBody text color\n\n\ntbl-border-color\nRGB or Hex\nBorder color\n\n\ntbl-border-width\nNumber (pt)\nBorder width (0 = none)\n\n\ntbl-cell-padding\nNumber (pt)\nCell padding\n\n\ntbl-alignment\nleft/center/right\nTable placement\n\n\n\nPrecedence: Per-cell styles &gt; Per-table properties &gt; Document-level YAML &gt; Theme defaults",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html#individual-cell-styling",
+    "href": "table-formatting.html#individual-cell-styling",
+    "title": "Table Formatting",
+    "section": "Individual Cell Styling",
+    "text": "Individual Cell Styling\nStyle specific cells using Excel-style addressing (A1, B2, etc.) with the tbl-cells property.\n\nCell Address Syntax\n\nColumn: Single letter A-Z (case-insensitive)\nRow: Number 1-99\nUnified Numbering: Header rows are row 1, body starts after headers\n\nExamples: A1 (first column, first row), B2 (second column, second row), Z99 (26th column, row 99)\n\n\nBasic Cell Styling\n| Status | Q1  | Q2  | Q3  |\n|--------|-----|-----|-----|\n| Sales  | 100 | 150 | 200 |\n| Costs  | 80  | 90  | 100 |\n\n: Quarterly Report {tbl-cells=\"{B2: {bgcolor: '#90EE90'}, D3: {txtcolor: '#FF0000'}}\"}\n\nB2: Green background on Q1 Sales value\nD3: Red text on Q3 Costs value\n\n\n\nCombined Cell Styles\nApply both background and text color to the same cell:\n| Task   | Priority |\n|--------|----------|\n| Review | High     |\n\n: Task List {tbl-cells=\"{B2: {bgcolor: '#FF6B6B', txtcolor: '#FFFFFF'}}\"}\n\n\nMultiple Cells\nStyle multiple cells in one declaration:\n| A  | B  | C  |\n|----|----|----|\n| 1  | 2  | 3  |\n| 4  | 5  | 6  |\n\n: Grid {tbl-cells=\"{A2: {bgcolor: '#FFE4B5'}, B2: {bgcolor: '#E6E6FA'}, C2: {bgcolor: '#98FB98'}, B3: {bgcolor: '#87CEEB'}}\"}\n\n\nCell Style Precedence\nIndividual cell styles override section-level colors:\n| Feature | Status |\n|---------|--------|\n| Auth    | Done   |\n\n: Status {tbl-header-bgcolor=\"#3498DB\" tbl-cells=\"{A1: {bgcolor: '#E74C3C'}}\"}\nThe header cell A1 will be red (#E74C3C) instead of blue, while B1 uses the table header color.\n\n\ntbl-cells Syntax Reference\ntbl-cells=\"{ADDR: {PROP: 'VALUE', ...}, ...}\"\n\n\n\n\n\n\n\n\nComponent\nDescription\nExample\n\n\n\n\nADDR\nCell address (column letter + row number)\nA1, B2, Z99\n\n\nbgcolor\nBackground color (hex or RGB)\n'#FF0000' or '255,0,0'\n\n\ntxtcolor\nText color (hex or RGB)\n'#FFFFFF' or '255,255,255'\n\n\n\nNotes:\n\nAddresses are case-insensitive (a1 = A1)\nQuotes around color values are required\nOut-of-bounds addresses are silently ignored\nInvalid addresses are silently ignored\n\n\n\nComplete Example\n| Feature | Description | Status |\n|:--------|:------------|-------:|\n| Auth    | OAuth 2.0   | Done   |\n\n: Feature status {#tbl-features tbl-colwidths=\"[30,50,20]\" tbl-header-bgcolor=\"0,100,180\" tbl-header-txtcolor=\"255,255,255\" tbl-border-color=\"0,100,180\" tbl-border-width=\"1\" tbl-alignment=\"center\"}",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html#grid-tables",
+    "href": "table-formatting.html#grid-tables",
+    "title": "Table Formatting",
+    "section": "Grid Tables",
+    "text": "Grid Tables\nTeXnative supports Pandoc grid tables with advanced features.\n\nColumn Alignment\nSpecify alignment using colons at separator boundaries:\n+---------------+---------------+--------------------+\n| Right         | Left          | Centered           |\n+==============:+:==============+:==================:+\n| Bananas       | 1.34          | built-in wrapper   |\n+---------------+---------------+--------------------+\n\nRight-aligned: +==============:+ (colon on right)\nLeft-aligned: +:==============+ (colon on left)\nCentered: +:==============:+ (colons on both sides)\nDefault: +===============+ (no colons)\n\n\n\nBullet Lists in Cells\n+---------------+---------------+--------------------+\n| Fruit         | Price         | Advantages         |\n+===============+===============+====================+\n| Bananas       | 1.34          | - built-in wrapper |\n|               |               | - bright color     |\n+---------------+---------------+--------------------+\n| Oranges       | 2.10          | - cures scurvy     |\n|               |               | - tasty            |\n+---------------+---------------+--------------------+\n\n\nAdditional Features\n\nHard line breaks: Use two trailing spaces or backslash\nMultiple paragraphs: Separate with blank lines within cells",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "table-formatting.html#examples",
+    "href": "table-formatting.html#examples",
+    "title": "Table Formatting",
+    "section": "Examples",
+    "text": "Examples\nFor more examples, see the repository:\n\nexample_markdown_tables.qmd\nexample_grid_tables.qmd\nexample_tables_frontmatter_configured.qmd",
+    "crumbs": [
+      "Home",
+      "Features",
+      "Table Formatting"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "TeXnative",
+    "section": "",
+    "text": "TeXnative is a modern, customizable Quarto PDF format extension for creating clean business documents such as reports, quotations, and letters."
+  },
+  {
+    "objectID": "index.html#features",
+    "href": "index.html#features",
+    "title": "TeXnative",
+    "section": "Features",
+    "text": "Features\n\nModern business document styling\nDark and light background themes\nCustom letterhead and cover page images\nProfessional table filter with advanced styling\nRich text formatting in table cells\nConfigurable column widths and alignments\nData classification labels on every page"
+  },
+  {
+    "objectID": "index.html#quick-start",
+    "href": "index.html#quick-start",
+    "title": "TeXnative",
+    "section": "Quick Start",
+    "text": "Quick Start\nInstall the extension:\nquarto use template wearetechnative/texnative\nAdd this to your document’s front matter:\nformat: texnative-pdf\nfilters:\n  - texnative\nSee the Getting Started guide for detailed instructions."
+  },
+  {
+    "objectID": "index.html#examples",
+    "href": "index.html#examples",
+    "title": "TeXnative",
+    "section": "Examples",
+    "text": "Examples\nExample files are available in the repository root:\n\n\n\nFile\nDescription\n\n\n\n\nexample_markdown_tables.qmd\nMarkdown table examples\n\n\nexample_grid_tables.qmd\nPandoc grid table examples\n\n\nexample_tables_frontmatter_configured.qmd\nDocument-level table styling\n\n\nexample_data_classification_label.qmd\nData classification label demo"
+  },
+  {
+    "objectID": "index.html#credits",
+    "href": "index.html#credits",
+    "title": "TeXnative",
+    "section": "Credits",
+    "text": "Credits\nIllustration is created by Illustrations.co from the ‘Life’ collection."
+  }
+]
