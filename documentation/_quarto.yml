@@ -15,6 +15,12 @@ website:
       - icon: github
         href: https://github.com/wearetechnative/TeXnative
   sidebar:
+
+    background: "#D9E3E4"
+    logo: "https://raw.githubusercontent.com/wearetechnative/TeXnative/refs/heads/main/media/TeXnative-logo.svg"
+    pinned: true
+    align: center
+
     style: "docked"
     search: true
     contents:
@@ -23,6 +29,8 @@ website:
           - getting-started.qmd
       - section: "Features"
         contents:
+          - cover-page.qmd
+          - letterhead.qmd
           - table-formatting.qmd
           - data-classification-label.qmd
       - section: "Reference"
@@ -31,5 +39,9 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, theme-dark.scss]
+    code-copy: true
+    code-overflow: wrap
     toc: true

@@ -1,0 +1,108 @@
+---
+title: "Cover Page"
+---
+
+The cover page feature generates a professional title page for your documents with branding, metadata, and document information.
+
+## Enabling the Cover Page
+
+Add `cover_page: true` to your document front matter:
+
+```yaml
+---
+title: Project Proposal
+cover_page: true
+format: texnative-pdf
+---
+```
+
+## Cover Page Content
+
+The cover page displays the following metadata when provided:
+
+| Field | Description |
+|-------|-------------|
+| `title` | Document title (displayed in uppercase) |
+| `subtitle` | Subtitle below the title |
+| `author` | Document author |
+| `date` | Document date |
+| `client.name` | Client name (if applicable) |
+| `contact_person` | Contact person for the document |
+| `type` | Document type (e.g., "Report", "Proposal") |
+| `document_number` | Document reference number |
+| `document_version` | Version number |
+
+## Cover Illustration
+
+Customize the cover page illustration with your own branding image:
+
+```yaml
+---
+cover_page: true
+cover_illustration_img: images/cover.png
+---
+```
+
+For dark theme documents, provide a separate dark-background version:
+
+```yaml
+---
+cover_page: true
+dark_background: true
+cover_illustration_img: images/cover-light.png
+cover_illustration_img_darkbg: images/cover-dark.png
+---
+```
+
+The illustration is centered at the top of the cover page at 70% column width.
+
+## Complete Example
+
+```yaml
+---
+title: Annual Report
+subtitle: Financial Year 2024
+author: Jane Dean
+date: 2024-12-01
+type: Report
+document_number: AR-2024-001
+document_version: 1.0
+
+client:
+  name: Acme Corporation
+contact_person: John Smith
+
+format: texnative-pdf
+filters:
+  - texnative
+
+cover_page: true
+dark_background: true
+cover_illustration_img_darkbg: _extensions/your-org/assets/cover.png
+---
+```
+
+## Without Cover Page
+
+If `cover_page: false` (or omitted), the document will display a simple inline title header instead of a full title page:
+
+```yaml
+---
+title: Quick Note
+subtitle: Internal Memo
+cover_page: false  # or simply omit this line
+---
+```
+
+To suppress the title entirely, use:
+
+```yaml
+---
+no_title: true
+---
+```
+
+## Related
+
+- [Letterhead](letterhead.qmd) - Background branding for all pages
+- [Configuration Reference](configuration.qmd) - All available options

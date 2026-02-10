@@ -1,0 +1,137 @@
+---
+title: "Letterhead"
+---
+
+The letterhead feature adds a background image to every page of your document, enabling corporate branding with headers, footers, and watermarks.
+
+## Enabling Letterhead
+
+Add `letterhead: true` to your document front matter along with the image path:
+
+```yaml
+---
+title: Business Letter
+letterhead: true
+letterhead_img: images/letterhead.png
+format: texnative-pdf
+---
+```
+
+## Letterhead Image Requirements
+
+The letterhead image should be:
+
+- **Full page size** - The image is scaled to fill the entire page (paper width x paper height)
+- **High resolution** - At least 300 DPI for print quality
+- **Correct aspect ratio** - Match your paper size (e.g., A4 = 210mm x 297mm)
+
+Supported formats: PNG, JPG, PDF
+
+### Creating a Letterhead Image
+
+Your letterhead image typically includes:
+
+- Company logo (usually top-left or top-center)
+- Company name and tagline
+- Contact information (footer area)
+- Decorative elements or brand colors
+- Sufficient white/dark space for document content
+
+::: {.callout-tip}
+Leave the center area of your letterhead mostly empty to ensure document text remains readable.
+:::
+
+## Dark Background Support
+
+For documents using `dark_background: true`, provide a separate letterhead designed for dark backgrounds:
+
+```yaml
+---
+letterhead: true
+dark_background: true
+letterhead_img: images/letterhead-light.png        # Used when dark_background: false
+letterhead_img_darkbg: images/letterhead-dark.png  # Used when dark_background: true
+---
+```
+
+The correct image is automatically selected based on the `dark_background` setting.
+
+## Corporate Identity Setup
+
+For organization-wide branding, create a custom Quarto extension with your assets:
+
+```
+_extensions/
+  your-org/
+    branding/
+      letterhead.png
+      letterhead-dark.png
+      cover.png
+    _extension.yml
+```
+
+Then reference them in your documents:
+
+```yaml
+---
+letterhead: true
+letterhead_img: _extensions/your-org/branding/letterhead.png
+letterhead_img_darkbg: _extensions/your-org/branding/letterhead-dark.png
+---
+```
+
+Or set defaults in your `_quarto.yml`:
+
+```yaml
+format:
+  texnative-pdf:
+    letterhead: true
+    letterhead_img: _extensions/your-org/branding/letterhead.png
+    letterhead_img_darkbg: _extensions/your-org/branding/letterhead-dark.png
+```
+
+## Complete Example
+
+```yaml
+---
+title: Project Status Update
+subtitle: Q4 Progress Report
+author: Jane Dean
+date: last-modified
+
+format: texnative-pdf
+filters:
+  - texnative
+
+# Branding
+letterhead: true
+dark_background: true
+letterhead_img: assets/letterhead-light.png
+letterhead_img_darkbg: assets/letterhead-dark.png
+
+# Layout
+cover_page: true
+toc: true
+page_numbers: true
+---
+```
+
+## Troubleshooting
+
+### Image not appearing
+- Verify the image path is correct relative to your document
+- Check that `letterhead: true` is set
+- Ensure the image file exists and is readable
+
+### Content overlapping letterhead
+- Adjust your letterhead image to have more transparent/empty space in the content area
+- Use page margins in your document if needed
+
+### Poor print quality
+- Use a higher resolution source image (300+ DPI)
+- Export your letterhead as PNG for best quality
+
+## Related
+
+- [Cover Page](cover-page.qmd) - Title page with branding
+- [Configuration Reference](configuration.qmd) - All available options
