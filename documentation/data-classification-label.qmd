@@ -1,4 +1,6 @@
-# Data Classification Labels
+---
+title: "Data Classification Labels"
+---
 
 Add security classification labels to your PDF documents. The label appears on every page, helping to indicate the sensitivity level of the document content.
 
@@ -51,6 +53,7 @@ data_classification_label:
 ```
 
 Each level requires:
+
 - `bgcolor` - Background color in hex format (e.g., `'#ff0000'`)
 - `txtcolor` - Text color in hex format (e.g., `'#ffffff'`)
 - `txt` - The text displayed in the label
@@ -82,19 +85,20 @@ data_classification_label:
 The label is positioned using absolute coordinates from the page edges:
 
 ```
-┌─────────────────────────────┐
-│  ↓ top                      │
-│ → ┌──────────┐              │
-│   │  LABEL   │              │
-│   └──────────┘              │
-│ left                        │
-│                             │
-└─────────────────────────────┘
++-----------------------------+
+|  ^ top                      |
+| > +----------+              |
+|   |  LABEL   |              |
+|   +----------+              |
+| left                        |
+|                             |
++-----------------------------+
 ```
 
 #### Available Text Sizes
 
 The `txtsize` option accepts LaTeX font size commands:
+
 - `tiny`
 - `scriptsize`
 - `footnotesize`
@@ -118,6 +122,7 @@ The `txtsize` option accepts LaTeX font size commands:
 Define classification levels once in `_quarto.yml` and reference them in individual documents:
 
 **_quarto.yml:**
+
 ```yaml
 data_classification_label:
   levels:
@@ -144,6 +149,7 @@ data_classification_label:
 ```
 
 **document.qmd:**
+
 ```yaml
 data_classification_label:
   level: confidential

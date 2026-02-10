@@ -1,4 +1,6 @@
-# Configuration Reference
+---
+title: "Configuration Reference"
+---
 
 This page documents all YAML front matter options available in TeXnative.
 
@@ -83,7 +85,7 @@ table-cell-padding: 6                  # Cell padding in points
 table-alignment: left                  # Table alignment: left, center, right
 ```
 
-For per-table styling options, see [Table Formatting](table-formatting.md).
+For per-table styling options, see [Table Formatting](table-formatting.qmd).
 
 ## Complete Example
 

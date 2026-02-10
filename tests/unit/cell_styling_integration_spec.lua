@@ -132,6 +132,26 @@ describe("Cell Styling Integration", function()
       assert.are.equal('#ff0000', styles[1][1].bgcolor)
     end)
 
+    it("cell outside table bounds is silently ignored during lookup", function()
+      -- Style Z99 on what would be a small table - the style is stored but
+      -- lookup for non-existent cells returns nil (no error)
+      local styles = core.parse_tbl_cells("{Z99: {bgcolor: '#ff0000'}}")
+      
+      -- Z99 = col 26, row 99 - the style is stored
+      assert.is_not_nil(styles[26])
+      assert.is_not_nil(styles[26][99])
+      assert.equals('#ff0000', styles[26][99].bgcolor)
+      
+      -- Lookup for cells within a hypothetical 3x3 table returns nil (no crash)
+      -- This simulates what happens when get_rows_data looks up styles
+      for col = 1, 3 do
+        for row = 1, 3 do
+          local style = styles[col] and styles[col][row]
+          assert.is_nil(style)  -- No styles defined for 3x3 area
+        end
+      end
+    end)
+
   end)
 
 end)

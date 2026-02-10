@@ -50,7 +50,7 @@
 
 ## Documentation Tasks
 
-- [ ] 10. Update README or docs with data classification label usage
+- [x] 10. Update README or docs with data classification label usage
   - Configuration reference
   - Examples for common use cases
 

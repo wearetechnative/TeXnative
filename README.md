@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <a href="./docs">Documentation</a> ·
+  <a href="https://wearetechnative.github.io/TeXnative/">Documentation</a> ·
   <a href="https://discord.gg/PzyFgtPXfh">Discord (channel: # texnative)</a>
 </p>
 
@@ -16,31 +16,15 @@
 
 Elegant documents with dark/light themes, custom branding, and advanced table styling.
 
-## Installing
+## Quick Start
 
 ```bash
 quarto use template wearetechnative/texnative
 ```
 
-This installs the extension and creates an starter temmplate-qmd file to kickoff your document.
+This installs the extension and creates a starter template-qmd file to kickoff your document.
 
-## Features
-
-- Modern business document for many purposes.
-- Light and dark example themes.
-- Customizable letterhead.
-- Customizable cover page.
-- Data classification labels (e.g., CONFIDENTIAL, INTERNAL, PUBLIC).
-- Including a Quarto filter for advanced table styling.
-- Actively maintained.
-
-![](./media/Screenshot-TexNative.png)
-
-![](./media/Screenshot-white.png)
-
-## Using
-
-Include this in your front matter.
+Add this to your front matter:
 
 ```yaml
 format: texnative-pdf
@@ -48,36 +32,26 @@ filters:
   - texnative
 ```
 
-Have a look at the `template.qmd`. This generates [this pdf](template.pdf).
+## Features
+
+- Modern business document for many purposes
+- Light and dark example themes
+- Customizable letterhead and cover page
+- Data classification labels (e.g., CONFIDENTIAL, INTERNAL, PUBLIC)
+- Advanced table styling with custom colors
+
+![](./media/Screenshot-TexNative.png)
+
+![](./media/Screenshot-white.png)
 
 ## Documentation
 
-For detailed documentation, see:
+For comprehensive documentation, visit the **[TeXnative Documentation Site](https://wearetechnative.github.io/TeXnative/)**.
 
-- **[Configuration Reference](docs/configuration.md)** - All YAML front matter options
-- **[Data Classification Labels](docs/data-classification-label.md)** - Add security labels to documents
-- **[Table Formatting](docs/table-formatting.md)** - Professional table styling guide
-- **[Documentation Index](docs/index.md)** - Complete documentation overview
-
-## Quick Start
-
-### Optional Frontmatter
-
-When set, these values are used in the cover page.
-
-```yaml
-subtitle: Agreement for a typical business case
-author: Jane Dean
-date: last-modified
-type: Report
-document_version: 1
-document_number: ABC013
-```
-
-### Custom letterhead
-
-Change `letterhead_img`, `letterhead_img_darkbg`, `cover_illustration_img` and
-`cover_illustration_img_darkbg` with images which fit your Corporate Identity.
+- [Getting Started](https://wearetechnative.github.io/TeXnative/getting-started.html) - Installation and basic usage
+- [Configuration Reference](https://wearetechnative.github.io/TeXnative/configuration.html) - All YAML front matter options
+- [Table Formatting](https://wearetechnative.github.io/TeXnative/table-formatting.html) - Professional table styling guide
+- [Data Classification Labels](https://wearetechnative.github.io/TeXnative/data-classification-label.html) - Security labels for documents
 
 ## Examples
 

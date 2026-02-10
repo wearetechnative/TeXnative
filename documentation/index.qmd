@@ -1,0 +1,50 @@
+---
+title: "TeXnative"
+---
+
+TeXnative is a modern, customizable Quarto PDF format extension for creating clean business documents such as reports, quotations, and letters.
+
+![](../media/Screenshot-TexNative.png){fig-alt="TeXnative dark theme example"}
+
+## Features
+
+- Modern business document styling
+- Dark and light background themes
+- Custom letterhead and cover page images
+- Professional table filter with advanced styling
+- Rich text formatting in table cells
+- Configurable column widths and alignments
+- Data classification labels on every page
+
+## Quick Start
+
+Install the extension:
+
+```bash
+quarto use template wearetechnative/texnative
+```
+
+Add this to your document's front matter:
+
+```yaml
+format: texnative-pdf
+filters:
+  - texnative
+```
+
+See the [Getting Started](getting-started.qmd) guide for detailed instructions.
+
+## Examples
+
+Example files are available in the repository root:
+
+| File | Description |
+|:-----|:------------|
+| [example_markdown_tables.qmd](https://github.com/wearetechnative/TeXnative/blob/main/example_markdown_tables.qmd) | Markdown table examples |
+| [example_grid_tables.qmd](https://github.com/wearetechnative/TeXnative/blob/main/example_grid_tables.qmd) | Pandoc grid table examples |
+| [example_tables_frontmatter_configured.qmd](https://github.com/wearetechnative/TeXnative/blob/main/example_tables_frontmatter_configured.qmd) | Document-level table styling |
+| [example_data_classification_label.qmd](https://github.com/wearetechnative/TeXnative/blob/main/example_data_classification_label.qmd) | Data classification label demo |
+
+## Credits
+
+Illustration is created by Illustrations.co from the 'Life' collection.

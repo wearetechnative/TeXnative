@@ -1,4 +1,6 @@
-# Table Formatting
+---
+title: "Table Formatting"
+---
 
 TeXnative includes a custom table filter that renders professional tables with colored headers and proper formatting.
 
@@ -78,12 +80,14 @@ Override colors for individual tables in the caption:
 ### Color Formats
 
 Colors can be specified as:
+
 - RGB: `"255,128,0"`
 - Hex: `"#ff8000"` or `"ff8000"`
 
 ### Dark Theme Defaults
 
 When `dark_background: true` is set, tables automatically use:
+
 - Header: `#471d00` (dark orange-brown)
 - Body: `#6d2b00` (medium orange-brown)
 
@@ -197,6 +201,7 @@ tbl-cells="{ADDR: {PROP: 'VALUE', ...}, ...}"
 | `txtcolor` | Text color (hex or RGB) | `'#FFFFFF'` or `'255,255,255'` |
 
 **Notes:**
+
 - Addresses are case-insensitive (`a1` = `A1`)
 - Quotes around color values are required
 - Out-of-bounds addresses are silently ignored
@@ -254,8 +259,8 @@ Specify alignment using colons at separator boundaries:
 
 ## Examples
 
-For more examples, see:
-- [example_markdown_tables.qmd](../example_markdown_tables.qmd) ([PDF](../example_markdown_tables.pdf))
-- [example_grid_tables.qmd](../example_grid_tables.qmd) ([PDF](../example_grid_tables.pdf))
-- [example_tables_frontmatter_configured.qmd](../example_tables_frontmatter_configured.qmd) ([PDF](../example_tables_frontmatter_configured.pdf))
-- [individual_table_cell_styling.qmd](../examples/individual_table_cell_styling.qmd) - Individual cell styling examples
+For more examples, see the repository:
+
+- [example_markdown_tables.qmd](https://github.com/wearetechnative/TeXnative/blob/main/example_markdown_tables.qmd)
+- [example_grid_tables.qmd](https://github.com/wearetechnative/TeXnative/blob/main/example_grid_tables.qmd)
+- [example_tables_frontmatter_configured.qmd](https://github.com/wearetechnative/TeXnative/blob/main/example_tables_frontmatter_configured.qmd)

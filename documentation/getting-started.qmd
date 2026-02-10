@@ -1,0 +1,119 @@
+---
+title: "Getting Started"
+---
+
+Get up and running with TeXnative in minutes.
+
+## Installation
+
+Install TeXnative using the Quarto template command:
+
+```bash
+quarto use template wearetechnative/texnative
+```
+
+This command:
+
+1. Downloads the TeXnative extension to `_extensions/texnative/`
+2. Creates a starter `template.qmd` file
+
+## Basic Usage
+
+Add the following to your document's YAML front matter:
+
+```yaml
+---
+title: My Document
+format: texnative-pdf
+filters:
+  - texnative
+---
+```
+
+Then render your document:
+
+```bash
+quarto render mydocument.qmd
+```
+
+## Document Metadata
+
+Add optional metadata for the cover page:
+
+```yaml
+---
+title: Project Proposal
+subtitle: Q4 Planning Document
+author: Jane Dean
+date: last-modified
+type: Report
+document_version: 1
+document_number: PROP-2024-001
+
+format: texnative-pdf
+filters:
+  - texnative
+---
+```
+
+## Theme Selection
+
+TeXnative includes light and dark themes:
+
+### Light Theme (Default)
+
+```yaml
+dark_background: false
+```
+
+![Light theme example](../media/Screenshot-white.png){fig-alt="TeXnative light theme"}
+
+### Dark Theme
+
+```yaml
+dark_background: true
+```
+
+![Dark theme example](../media/Screenshot-TexNative.png){fig-alt="TeXnative dark theme"}
+
+## Common Options
+
+```yaml
+---
+format: texnative-pdf
+filters:
+  - texnative
+
+# Theme
+dark_background: true
+
+# Document structure
+toc: true
+toc-title: Contents
+cover_page: true
+letterhead: true
+page_numbers: true
+
+# Layout
+papersize: a4
+---
+```
+
+## Custom Branding
+
+Replace the default letterhead and cover images with your own:
+
+```yaml
+letterhead_img: path/to/letterhead.png
+letterhead_img_darkbg: path/to/letterhead-dark.png
+cover_illustration_img: path/to/cover.jpg
+cover_illustration_img_darkbg: path/to/cover-dark.jpg
+```
+
+See [Configuration Reference](configuration.qmd) for all available options.
+
+## Next Steps
+
+- [Configuration Reference](configuration.qmd) - All YAML options
+- [Table Formatting](table-formatting.qmd) - Professional table styling
+- [Data Classification Labels](data-classification-label.qmd) - Security labels on every page
