@@ -1,0 +1,50 @@
+title: TexNative
+author: Pim Snel
+version: 1.1.1
+contributes:
+
+  filters:
+    - texnative-pre.lua
+    - texnative_dcl.lua
+    - texnative.lua
+
+  formats:
+    pdf:
+      # DOCUMENT DEFAULT CONFIGURATION
+      toc: true                                        # show table of contents
+      toc-title: Contents                              # title of table of contents
+      cover_page: true                                 # generate cover page
+      letterhead: true                                 # use a letterhead background
+      dark_background: false                           # use the dark bg or letterhead with white text
+
+      urlcolor: magenta
+      linkcolor: magenta
+      colorlinks: true
+
+      page_numbers: true                               # show page numbers
+      paragraph_numbers: true                          # show paragraph numbers before headers
+      papersize: a4
+      disable_justify: false                           # true: justify left and right, false: only justify left;
+      geometry:
+        - top=60mm
+      letterhead_img: bgwhite.jpg                      # path to background image
+      letterhead_img_darkbg: bgdark.jpg                # path to background image for dark background
+      cover_illustration_img: cover-ill.png            # path to cover page illustration image
+      cover_illustration_img_darkbg: cover-ill.png     # path to cover page illustration image for dark background
+
+      # DON'T CHANGE THESE
+      classoption: table
+      format-resources:
+        - "images/bgdark.jpg"
+        - "images/bgwhite.jpg"
+        - "images/cover-ill.png"
+      template-partials:
+        - "partials/document-colors.tex"
+        - "partials/document-background.tex"
+        - "partials/document-header-footer.tex"
+        - "partials/document-text-style.tex"
+        - "partials/page-cover.tex"
+        - "partials/page-title.tex"
+        - "before-body.tex"
+        - "pandoc.tex"
+        - "toc.tex"

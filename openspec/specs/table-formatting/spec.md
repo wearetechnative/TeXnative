@@ -1,0 +1,515 @@
+# table-formatting Specification
+
+## Purpose
+TBD - created by archiving change update-table-formatting. Update Purpose after archive.
+## Requirements
+### Requirement: Rich Text Cell Content
+
+The table filter SHALL preserve inline formatting within table cells when rendering to LaTeX. Supported inline elements include bold (Strong), italic (Emph), inline code (Code), and hyperlinks (Link).
+
+#### Scenario: Bold text in cell
+
+- **WHEN** a table cell contains `**bold text**`
+- **THEN** the LaTeX output SHALL include `\textbf{bold text}`
+
+#### Scenario: Italic text in cell
+
+- **WHEN** a table cell contains `*italic text*`
+- **THEN** the LaTeX output SHALL include `\textit{italic text}`
+
+#### Scenario: Inline code in cell
+
+- **WHEN** a table cell contains `` `code` ``
+- **THEN** the LaTeX output SHALL include `\texttt{code}`
+
+#### Scenario: Hyperlink in cell
+
+- **WHEN** a table cell contains `[link text](https://example.com)`
+- **THEN** the LaTeX output SHALL include `\href{https://example.com}{link text}`
+
+#### Scenario: Mixed formatting
+
+- **WHEN** a table cell contains `**bold** and *italic*`
+- **THEN** the LaTeX output SHALL include both `\textbf{bold}` and `\textit{italic}` in sequence
+
+### Requirement: Column Width Support
+
+The table filter SHALL respect column width specifications from Quarto's `tbl-colwidths` attribute or from the table's `colspecs` width values.
+
+#### Scenario: Explicit column widths via tbl-colwidths
+
+- **WHEN** a table has caption attribute `{tbl-colwidths="[50,25,25]"}`
+- **THEN** the LaTeX output SHALL use proportional column widths (e.g., `p{0.5\linewidth}`, `p{0.25\linewidth}`, `p{0.25\linewidth}`)
+
+#### Scenario: No width specified
+
+- **WHEN** a table has no `tbl-colwidths` attribute and no width in colspecs
+- **THEN** the LaTeX output SHALL use automatic-width alignment specifiers (`l`, `c`, `r`)
+
+### Requirement: Caption Property Support
+
+The table filter SHALL apply caption properties parsed from the table caption to configure table output.
+
+#### Scenario: Table with label property
+
+- **WHEN** a table caption contains `{#tbl-myid}`
+- **THEN** the LaTeX output SHALL include `\label{tbl-myid}` for cross-referencing
+
+#### Scenario: Table with caption text
+
+- **WHEN** a table has a non-empty caption (excluding property block)
+- **THEN** the LaTeX output SHALL include `\caption{caption text}` within a table environment
+
+### Requirement: Table Configuration Documentation
+
+The README SHALL document how to configure tables, including column widths, rich text formatting, and caption properties.
+
+#### Scenario: Documentation covers column widths
+
+- **WHEN** a user reads the README Tables section
+- **THEN** they SHALL find instructions for setting column widths using `tbl-colwidths` attribute with example markdown
+
+#### Scenario: Documentation covers rich text in cells
+
+- **WHEN** a user reads the README Tables section
+- **THEN** they SHALL find a list of supported inline formatting (bold, italic, code, links) with example syntax
+
+#### Scenario: Documentation covers caption properties
+
+- **WHEN** a user reads the README Tables section
+- **THEN** they SHALL find instructions for adding captions and labels for cross-referencing
+
+### Requirement: Table Header Background Color Configuration
+
+The table filter SHALL support configurable header background colors at both document and per-table levels.
+
+#### Scenario: Document-level header color via YAML
+
+- **WHEN** the document YAML contains `table-header-bgcolor: "255,0,0"`
+- **THEN** all table headers SHALL use RGB(255,0,0) as background color instead of the theme default
+
+#### Scenario: Per-table header color via caption property
+
+- **WHEN** a table caption contains `{tbl-header-bgcolor="0,128,255"}`
+- **THEN** that table's header SHALL use RGB(0,128,255) as background color, overriding any document-level setting
+
+#### Scenario: No header color specified
+
+- **WHEN** neither document YAML nor caption specifies a header color
+- **THEN** the table header SHALL use the theme default `tableheaderbgcolor`
+
+#### Scenario: Dark background theme default header color
+
+- **WHEN** `dark_background: true` is set and no custom header color is specified
+- **THEN** the table header SHALL use `#471d00` as the default background color
+
+### Requirement: Table Body Background Color Configuration
+
+The table filter SHALL support configurable body background colors at both document and per-table levels.
+
+#### Scenario: Document-level body color via YAML
+
+- **WHEN** the document YAML contains `table-body-bgcolor: "240,240,240"`
+- **THEN** all table body rows SHALL use RGB(240,240,240) as background color
+
+#### Scenario: Per-table body color via caption property
+
+- **WHEN** a table caption contains `{tbl-body-bgcolor="255,255,200"}`
+- **THEN** that table's body rows SHALL use RGB(255,255,200) as background color
+
+#### Scenario: No body color specified
+
+- **WHEN** neither document YAML nor caption specifies a body color
+- **THEN** the table body rows SHALL have no background color (transparent)
+
+#### Scenario: Dark background theme default body color
+
+- **WHEN** `dark_background: true` is set and no custom body color is specified
+- **THEN** the table body rows SHALL use `#6d2b00` as the default background color
+
+### Requirement: Table Color Documentation
+
+The README SHALL document how to configure table header and body background colors.
+
+#### Scenario: Documentation covers YAML options
+
+- **WHEN** a user reads the README Tables section
+- **THEN** they SHALL find instructions for `table-header-bgcolor` and `table-body-bgcolor` YAML options with RGB format
+
+#### Scenario: Documentation covers caption properties
+
+- **WHEN** a user reads the README Tables section
+- **THEN** they SHALL find instructions for `tbl-header-bgcolor` and `tbl-body-bgcolor` caption properties with examples
+
+### Requirement: Table Properties Reference Documentation
+
+The README SHALL include a dedicated "Table Properties Reference" section that consolidates all available table configuration options in a quick-reference format, listing property names, value formats, defaults, and scope.
+
+#### Scenario: User looks up document-level table properties
+
+- **WHEN** a user reads the "Table Properties Reference" section
+- **THEN** they SHALL find a reference listing all document-level YAML properties (`table-header-bgcolor`, `table-body-bgcolor`) with their value formats and default values
+
+#### Scenario: User looks up per-table caption properties
+
+- **WHEN** a user reads the "Table Properties Reference" section
+- **THEN** they SHALL find a reference listing all per-table caption properties (`tbl-colwidths`, `tbl-header-bgcolor`, `tbl-body-bgcolor`, `#tbl-label`) with their value formats and usage examples
+
+#### Scenario: User understands property precedence
+
+- **WHEN** a user reads the "Table Properties Reference" section
+- **THEN** they SHALL find documentation explaining that per-table properties override document-level properties, which override theme defaults
+
+### Requirement: Document-level Table Style Defaults
+
+Tables SHALL support document-level YAML properties for text color, border, padding, and alignment that apply to all tables unless overridden. When `dark_background: true`, text colors SHALL default to white and border color SHALL default to a warm brown (#8b4513).
+
+#### Scenario: Dark background sets default text colors
+
+- **GIVEN** a document with `dark_background: true` and no explicit text color settings
+- **WHEN** a table is rendered
+- **THEN** header and body text SHALL default to white for readability
+
+#### Scenario: Dark background sets default border color
+
+- **GIVEN** a document with `dark_background: true` and no explicit border color
+- **WHEN** a table is rendered
+- **THEN** the border color SHALL default to #8b4513 (warm brown)
+
+#### Scenario: Document-level text color applies to all tables
+
+- **GIVEN** a document with `table-header-txtcolor: "0,100,200"` in YAML
+- **WHEN** multiple tables are rendered
+- **THEN** all table headers SHALL use the specified blue text color
+
+### Requirement: Table Text Color Properties
+
+Tables SHALL support text color configuration via document-level YAML properties (`table-header-txtcolor`, `table-body-txtcolor`) and per-table caption properties (`tbl-header-txtcolor`, `tbl-body-txtcolor`), using the same RGB/hex format as background color properties.
+
+#### Scenario: User sets header text color per-table
+
+- **GIVEN** a table with caption property `tbl-header-txtcolor="255,255,255"`
+- **WHEN** the document is rendered
+- **THEN** the header row text SHALL be rendered in white (#FFFFFF)
+
+#### Scenario: User sets body text color per-table
+
+- **GIVEN** a table with caption property `tbl-body-txtcolor="#336699"`
+- **WHEN** the document is rendered
+- **THEN** the body row text SHALL be rendered in the specified blue color
+
+#### Scenario: Per-table text color overrides document-level
+
+- **GIVEN** a document with `table-body-txtcolor: "0,0,0"` and a table with `tbl-body-txtcolor="255,0,0"`
+- **WHEN** the document is rendered
+- **THEN** that table's body text SHALL be red, overriding the document default
+
+### Requirement: Table Border Properties
+
+Tables SHALL support border configuration via document-level YAML properties (`table-border-color`, `table-border-width`) and per-table caption properties (`tbl-border-color`, `tbl-border-width`). Border width uses pt units and 0 is allowed for no border.
+
+#### Scenario: User sets custom border color
+
+- **GIVEN** a table with caption property `tbl-border-color="100,100,100"`
+- **WHEN** the document is rendered
+- **THEN** the table borders SHALL be rendered in gray (#646464)
+
+#### Scenario: User removes borders
+
+- **GIVEN** a table with caption property `tbl-border-width="0"`
+- **WHEN** the document is rendered
+- **THEN** the table SHALL have no visible borders
+
+#### Scenario: User sets thick borders
+
+- **GIVEN** a table with caption property `tbl-border-width="2"`
+- **WHEN** the document is rendered
+- **THEN** the table borders SHALL be 2pt thick
+
+### Requirement: Table Cell Padding Property
+
+Tables SHALL support cell padding configuration via document-level YAML property (`table-cell-padding`) and per-table caption property (`tbl-cell-padding`). Padding uses pt units.
+
+#### Scenario: User sets cell padding
+
+- **GIVEN** a table with caption property `tbl-cell-padding="10"`
+- **WHEN** the document is rendered
+- **THEN** the table cells SHALL have 10pt padding
+
+### Requirement: Table Horizontal Alignment Property
+
+Tables SHALL support horizontal placement configuration via document-level YAML property (`table-alignment`) and per-table caption property (`tbl-alignment`) with values `left`, `center`, or `right`.
+
+#### Scenario: User centers a table
+
+- **GIVEN** a table with caption property `tbl-alignment="center"`
+- **WHEN** the document is rendered
+- **THEN** the table SHALL be horizontally centered on the page
+
+#### Scenario: User right-aligns a table
+
+- **GIVEN** a table with caption property `tbl-alignment="right"`
+- **WHEN** the document is rendered
+- **THEN** the table SHALL be aligned to the right margin
+
+### Requirement: Grid Table Column Alignment
+
+The table filter SHALL support column alignment as specified by Pandoc's grid table colon syntax in separator lines, rendering each column with the appropriate LaTeX alignment.
+
+#### Scenario: Right-aligned column via colon syntax
+
+- **GIVEN** a grid table with separator line `+==============:+` (colon on right)
+- **WHEN** the document is rendered
+- **THEN** the column content SHALL be right-aligned in the LaTeX output
+
+#### Scenario: Left-aligned column via colon syntax
+
+- **GIVEN** a grid table with separator line `+:==============+` (colon on left)
+- **WHEN** the document is rendered
+- **THEN** the column content SHALL be left-aligned in the LaTeX output
+
+#### Scenario: Center-aligned column via colon syntax
+
+- **GIVEN** a grid table with separator line `+:==============:+` (colons on both sides)
+- **WHEN** the document is rendered
+- **THEN** the column content SHALL be centered in the LaTeX output
+
+#### Scenario: Default alignment without colons
+
+- **GIVEN** a grid table with separator line `+===============+` (no colons)
+- **WHEN** the document is rendered
+- **THEN** the column content SHALL use default (left) alignment
+
+#### Scenario: Mixed alignment across columns
+
+- **GIVEN** a grid table with multiple columns having different alignment specifications
+- **WHEN** the document is rendered
+- **THEN** each column SHALL be aligned according to its individual colon specification
+
+### Requirement: Bullet List Cell Content
+
+The table filter SHALL render bullet lists within table cells as properly formatted LaTeX itemize environments, preserving list structure and enabling multi-item content.
+
+#### Scenario: Simple bullet list in cell
+
+- **GIVEN** a grid table cell containing a markdown bullet list with multiple items (using `-` prefix within the cell)
+- **WHEN** the document is rendered
+- **THEN** the LaTeX output SHALL include an itemize environment with each list item preserved
+
+#### Scenario: Bullet list with inline formatting
+
+- **GIVEN** a grid table cell containing a bullet list where items include bold or italic text
+- **WHEN** the document is rendered
+- **THEN** the LaTeX output SHALL preserve both the list structure and the inline formatting
+
+#### Scenario: Mixed content with bullet list
+
+- **GIVEN** a grid table cell containing a paragraph followed by a bullet list
+- **WHEN** the document is rendered
+- **THEN** the LaTeX output SHALL render both the paragraph text and the subsequent bullet list
+
+### Requirement: Hard Line Breaks in Cells
+
+The table filter SHALL render hard line breaks (created with two spaces at end of line or backslash-newline in markdown) as LaTeX line breaks within table cells.
+
+#### Scenario: Hard line break between text
+
+- **GIVEN** a grid table cell containing text with a hard line break
+- **WHEN** the document is rendered
+- **THEN** the LaTeX output SHALL include `\\` to create a line break between the text segments
+
+#### Scenario: Multiple hard line breaks
+
+- **GIVEN** a grid table cell containing multiple hard line breaks
+- **WHEN** the document is rendered
+- **THEN** each hard line break SHALL be rendered as a separate `\\` in the LaTeX output
+
+### Requirement: Multiple Paragraphs in Cells
+
+The table filter SHALL render multiple paragraphs within table cells with appropriate vertical spacing between them.
+
+#### Scenario: Two paragraphs in cell
+
+- **GIVEN** a grid table cell containing two paragraphs separated by a blank line in the markdown source
+- **WHEN** the document is rendered
+- **THEN** the LaTeX output SHALL include paragraph separation (e.g., `\\[0.5em]` or `\par`) between the text blocks
+
+### Requirement: Grid Table Features Documentation
+
+The README SHALL document the advanced grid table features including column alignment syntax, bullet lists in cells, and hard line breaks.
+
+#### Scenario: Documentation covers column alignment syntax
+
+- **WHEN** a user reads the README Tables section
+- **THEN** they SHALL find instructions for setting column alignment using Pandoc's colon syntax in grid table separator lines with examples
+
+#### Scenario: Documentation covers bullet lists in cells
+
+- **WHEN** a user reads the README Tables section
+- **THEN** they SHALL find instructions for including bullet lists within table cells using grid table syntax
+
+#### Scenario: Documentation covers hard line breaks
+
+- **WHEN** a user reads the README Tables section
+- **THEN** they SHALL find instructions for creating hard line breaks within table cells
+
+### Requirement: Individual Cell Background Color
+
+The system SHALL allow users to specify a background color for individual cells using Excel-style cell addressing (column letter + row number). Cell styles MUST override section-level styles (header/body) for the targeted cell.
+
+**Properties:**
+- Cells are addressed using `A1` syntax where A=first column, 1=first row (header)
+- Row numbering is unified: header row(s) start at 1, body rows continue sequentially
+- Supports hex colors (#rrggbb) and RGB format (r,g,b)
+- Per-cell styles take precedence over `tbl-header-bgcolor` and `tbl-body-bgcolor`
+
+#### Scenario: Single header cell with custom background
+
+Given a table with a header row and body rows
+When `tbl-cells="{A1: {bgcolor: '#ff0000'}}"` is specified in the caption
+Then cell A1 (first header cell) renders with red background
+And other header cells retain the header background color
+And body cells retain the body background color
+
+#### Scenario: Body cell background overrides section color
+
+Given a table with `tbl-body-bgcolor="#e0e0e0"` 
+When `tbl-cells="{B2: {bgcolor: '#00ff00'}}"` is specified
+Then cell B2 (second column, first body row) renders with green background
+And other body cells render with gray background (#e0e0e0)
+
+#### Scenario: Multiple cells with different backgrounds
+
+Given a table with 3 columns and 3 rows (1 header + 2 body)
+When `tbl-cells="{A1: {bgcolor: '#ff0000'}, C2: {bgcolor: '#00ff00'}, B3: {bgcolor: '#0000ff'}}"` is specified
+Then each targeted cell renders with its specified background color
+And non-targeted cells retain default or section-level styling
+
+---
+
+### Requirement: Individual Cell Text Color
+
+The system SHALL allow users to specify a text color for individual cells using the same Excel-style addressing. Cell text color MUST override section-level text colors for the targeted cell.
+
+**Properties:**
+- Uses same `A1` addressing syntax as background colors
+- Supports hex colors (#rrggbb) and RGB format (r,g,b)
+- Per-cell text color takes precedence over `tbl-header-txtcolor` and `tbl-body-txtcolor`
+- Can be combined with cell background color in same cell spec
+
+#### Scenario: Single cell with custom text color
+
+Given a table with default text colors
+When `tbl-cells="{A1: {txtcolor: '#ffffff'}}"` is specified
+Then cell A1 text renders in white
+And other cells retain default text color
+
+#### Scenario: Cell with both background and text color
+
+Given a table with default styling
+When `tbl-cells="{B2: {bgcolor: '#000000', txtcolor: '#ffffff'}}"` is specified
+Then cell B2 renders with black background and white text
+And other cells retain default styling
+
+---
+
+### Requirement: Cell Addressing with Multi-Row Headers
+
+When a table has multiple header rows (via `tbl-header-rows`), all header rows SHALL be numbered sequentially starting at 1, and body rows MUST continue from there.
+
+**Properties:**
+- With `tbl-header-rows: 2`, header cells are rows 1-2, body starts at row 3
+- Consistent numbering regardless of header/body boundary
+- Matches visual row order from top of table
+
+#### Scenario: Styling cell in second header row
+
+Given a table with `tbl-header-rows: 2`
+When `tbl-cells="{A2: {bgcolor: '#ff0000'}}"` is specified
+Then cell A2 (first column, second header row) renders with red background
+And row 1 (first header row) cells are unaffected
+
+#### Scenario: First body row with multi-row header
+
+Given a table with `tbl-header-rows: 2` and 2 body rows
+When `tbl-cells="{A3: {bgcolor: '#00ff00'}}"` is specified
+Then cell A3 (first column, first body row) renders with green background
+And header rows (1-2) are unaffected
+
+---
+
+### Requirement: Cell Style Precedence
+
+Cell-level styles SHALL have highest precedence, followed by per-table section styles, then document-level styles, then theme defaults.
+
+**Precedence (highest to lowest):**
+1. `tbl-cells` individual cell styles
+2. Per-table caption properties (`tbl-header-bgcolor`, `tbl-body-bgcolor`, etc.)
+3. Document-level YAML (`table.header-bgcolor`, etc.)
+4. Theme defaults
+
+#### Scenario: Cell style overrides per-table section style
+
+Given a table with `tbl-header-bgcolor="#cccccc"` in caption
+When `tbl-cells="{A1: {bgcolor: '#ff0000'}}"` is also specified
+Then cell A1 renders with red background (#ff0000)
+And other header cells render with gray background (#cccccc)
+
+#### Scenario: Cell style overrides document-level style
+
+Given document YAML with `table.body-txtcolor: "#333333"`
+And a table with `tbl-cells="{B2: {txtcolor: '#ff0000'}}"`
+Then cell B2 text renders in red (#ff0000)
+And other body cells render with dark gray text (#333333)
+
+---
+
+### Requirement: Invalid Cell Address Handling
+
+Invalid cell addresses (out of bounds, malformed) SHALL be silently ignored without affecting table rendering. A warning MAY be logged for debugging.
+
+**Properties:**
+- Addresses beyond table dimensions are ignored (e.g., `Z99` in a 3x3 table)
+- Malformed addresses (e.g., `1A`, `AA`, `11`) are ignored
+- Table renders successfully with valid addresses applied
+- Does not cause rendering errors
+
+#### Scenario: Cell address beyond table bounds
+
+Given a 3-column, 3-row table
+When `tbl-cells="{D1: {bgcolor: '#ff0000'}, Z99: {bgcolor: '#00ff00'}}"` is specified
+Then the table renders without errors
+And no cells have the specified colors (addresses out of bounds)
+
+#### Scenario: Malformed cell address
+
+Given a valid table
+When `tbl-cells="{1A: {bgcolor: '#ff0000'}}"` is specified (malformed)
+Then the table renders without errors
+And no styling is applied from the malformed address
+
+---
+
+### Requirement: Cell Styling with Spanning (Future Compatibility)
+
+When `add-grid-table-spanning` is implemented, cell styles SHALL apply to the anchor cell (top-left) of a spanned region. Covered cells (those hidden by the span) MUST ignore any styles.
+
+**Properties:**
+- Anchor cell: top-left cell of a merged region; styles apply here
+- Covered cells: cells hidden by rowspan/colspan; styles ignored
+- Styling the anchor affects the visual appearance of the entire merged cell
+- This requirement becomes active when spanning is available
+
+#### Scenario: Styling anchor cell of spanned region
+
+Given a table with cell A1 spanning 2 columns (A1:B1)
+When `tbl-cells="{A1: {bgcolor: '#ff0000'}}"` is specified
+Then the entire merged cell renders with red background
+
+#### Scenario: Style on covered cell is ignored
+
+Given a table with cell A1 spanning 2 columns (A1:B1)
+When `tbl-cells="{B1: {bgcolor: '#00ff00'}}"` is specified (B1 is covered by A1's span)
+Then the merged cell retains default styling
+And no error occurs
+

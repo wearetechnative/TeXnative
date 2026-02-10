@@ -1,0 +1,31 @@
+$if(dark_background)$
+  \color{white}
+  \pagecolor{backgroundcolor}
+
+  $if(letterhead)$
+    \usepackage{background}
+    \backgroundsetup{
+      scale=1,
+      angle=0,
+      opacity=1.0,
+      position=current page.center,
+      contents={\includegraphics[width=\paperwidth,height=\paperheight]{$letterhead_img_darkbg$}}
+      }
+  $endif$
+
+$else$
+
+  $if(letterhead)$
+    \usepackage{background}
+    \backgroundsetup{
+    scale=1,
+    angle=0,
+    opacity=1.0,
+    position=current page.center,
+    contents={\includegraphics[width=\paperwidth,height=\paperheight]{$letterhead_img$}}
+    }
+  $endif$
+
+$endif$
+
+
