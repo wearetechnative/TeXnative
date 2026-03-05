@@ -1,6 +1,6 @@
 {
   "TexNative format": {
-    "prefix": "texnative-format",
+    "prefix": "format",
     "body": [
       "format: texnative-pdf",
       "filters:",
