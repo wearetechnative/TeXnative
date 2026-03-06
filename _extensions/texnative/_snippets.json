@@ -1,0 +1,27 @@
+{
+  "TexNative format": {
+    "prefix": "format",
+    "body": [
+      "format: texnative-pdf",
+      "filters:",
+      "  - texnative",
+      "toc: true",
+      "cover_page: true",
+      "letterhead: true"
+    ],
+    "description": "Insert a basic TexNative PDF setup."
+  },
+  "Data classification label": {
+    "prefix": "data-label",
+    "body": [
+      "data_classification_label:",
+      "  level: ${1:confidential}",
+      "  levels:",
+      "    confidential:",
+      "      bgcolor: '#ff0000'",
+      "      txtcolor: '#ffffff'",
+      "      txt: CONFIDENTIAL"
+    ],
+    "description": "Insert a data classification label configuration block."
+  }
+}
