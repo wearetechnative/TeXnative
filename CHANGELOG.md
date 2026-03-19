@@ -2,6 +2,12 @@
 
 ## Next
 
+## Version 1.1.2
+
+- chore: openspec upgrade
+- fix: vars were not substituted in tables
+- feature: if data_classification is set, print on the cover page
+
 ## Version 1.1.1
 
 - fix global styling
