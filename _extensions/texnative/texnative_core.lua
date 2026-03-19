@@ -135,6 +135,9 @@ function M.parse_tbl_cells(str)
   return cell_styles
 end
 
+-- Optional shortcode resolver, set by texnative.lua after Meta processing
+M.shortcode_resolver = nil
+
 -- Render Pandoc inline elements to LaTeX, preserving rich text formatting
 function M.render_inline_latex(inlines)
   local result = ''
@@ -159,6 +162,20 @@ function M.render_inline_latex(inlines)
       result = result .. '\\href{' .. url .. '}{' .. text .. '}'
     elseif inline.t == 'RawInline' and inline.format == 'tex' then
       result = result .. inline.text
+    elseif inline.t == 'Span' then
+      -- Handle Span elements: check for unresolved Quarto shortcodes first
+      if M.shortcode_resolver and inline.attr
+         and inline.attr.attributes['__quarto_custom_type'] == 'Shortcode' then
+        local resolved = M.shortcode_resolver(inline)
+        if resolved then
+          result = result .. M.escape_latex(resolved)
+        end
+      elseif inline.content and #inline.content > 0 then
+        -- Regular Span with content: render children
+        result = result .. M.render_inline_latex(inline.content)
+      else
+        result = result .. M.escape_latex(pandoc.utils.stringify(inline))
+      end
     else
       -- Fallback: stringify unknown elements
       result = result .. M.escape_latex(pandoc.utils.stringify(inline))

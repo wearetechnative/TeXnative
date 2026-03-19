@@ -143,6 +143,9 @@ function Meta(meta)
     border_radius = pandoc.utils.stringify(dcl["border-radius"] or "2pt")
   }
 
+  -- Expose resolved text for cover page template
+  meta.dcl_cover_text = config.txt
+
   -- Generate LaTeX code
   local latex_code = M.generate_latex(config)
 

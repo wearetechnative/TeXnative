@@ -28,8 +28,68 @@ local doc_meta = {
   div_cell_styles = {}
 }
 
+-- Shortcode resolution: map from shortcode ID to meta path
+local shortcode_map = nil
+local full_meta = nil
+
+-- Resolve a dotted path like "sla.hour_rate" from metadata
+local function resolve_meta_path(meta, path)
+  local current = meta
+  for part in path:gmatch("[^%.]+") do
+    if current == nil then return nil end
+    if type(current) == 'table' then
+      current = current[part]
+    else
+      return nil
+    end
+  end
+  if current then
+    return pandoc.utils.stringify(current)
+  end
+  return nil
+end
+
+-- Build shortcode ID-to-path map from source file.
+-- Quarto assigns sequential IDs to shortcodes, skipping those inside
+-- code blocks (```...```) and raw LaTeX blocks. We must match this behavior.
+local function build_shortcode_map()
+  if not quarto or not quarto.doc or not quarto.doc.input_file then return nil end
+  local f = io.open(quarto.doc.input_file, "r")
+  if not f then return nil end
+  local source = f:read("*all")
+  f:close()
+
+  -- Remove content inside fenced code blocks (```...```) to skip shortcodes there
+  local cleaned = source:gsub("```.-```", "")
+
+  local map = {}
+  local idx = 0
+  for path in cleaned:gmatch("{{< meta ([%w_%.]+) >}}") do
+    idx = idx + 1
+    map[tostring(idx)] = path
+  end
+  if idx > 0 then return map end
+  return nil
+end
+
 -- FILTERS/DATE-FORMAT.LUA
 function Meta(meta)
+  -- Store full metadata and build shortcode map for resolving meta shortcodes in tables
+  full_meta = meta
+  shortcode_map = build_shortcode_map()
+
+  -- Set up shortcode resolver for render_inline_latex
+  if shortcode_map then
+    core.shortcode_resolver = function(span)
+      local id = span.attr.attributes['__quarto_custom_id']
+      local path = shortcode_map[id]
+      if path then
+        return resolve_meta_path(full_meta, path)
+      end
+      return nil
+    end
+  end
+
   -- Store table color settings from document metadata
   if meta['table-header-bgcolor'] then
     doc_meta.table_header_color = pandoc.utils.stringify(meta['table-header-bgcolor'])
@@ -64,14 +124,17 @@ function Meta(meta)
   if meta.date then
     local format = "(%d+)-(%d+)-(%d+)"
     local y, m, d = pandoc.utils.stringify(meta.date):match(format)
-    local date = os.time({
-      year = y,
-      month = m,
-      day = d,
-    })
-    local date_string = os.date("%d %b %Y", date)
-
-    meta.date = pandoc.Str(date_string)
+    -- Only reformat if the date matches YYYY-MM-DD pattern
+    if y and m and d then
+      local date = os.time({
+        year = y,
+        month = m,
+        day = d,
+      })
+      local date_string = os.date("%d %b %Y", date)
+      meta.date = pandoc.Str(date_string)
+    end
+    -- Otherwise keep the date as-is (already formatted or different format)
     return meta
   end
 end
