@@ -1,0 +1,126 @@
+$schema: https://m.canouil.dev/quarto-wizard/assets/schema/v1/extension-schema.json
+
+formats:
+  texnative-pdf:
+    toc:
+      type: boolean
+      default: true
+      description: Show table of contents.
+    toc-title:
+      type: string
+      default: Contents
+      description: Title of the table of contents.
+    cover_page:
+      type: boolean
+      default: true
+      description: Enable generated cover page.
+    letterhead:
+      type: boolean
+      default: true
+      description: Enable letterhead background.
+    dark_background:
+      type: boolean
+      default: false
+      description: Use dark background styling.
+    page_numbers:
+      type: boolean
+      default: true
+      description: Show page numbers.
+    paragraph_numbers:
+      type: boolean
+      default: true
+      description: Show paragraph numbers before headings.
+    papersize:
+      type: string
+      default: a4
+      description: Paper size.
+    disable_justify:
+      type: boolean
+      default: false
+      description: Disable full text justification.
+    urlcolor:
+      type: string
+      description: URL link color.
+    linkcolor:
+      type: string
+      description: Markdown link color.
+    colorlinks:
+      type: boolean
+      default: true
+      description: Enable colored links.
+    letterhead_img:
+      type: string
+      description: Light theme letterhead image path.
+      completion:
+        type: file
+    letterhead_img_darkbg:
+      type: string
+      description: Dark theme letterhead image path.
+      completion:
+        type: file
+    cover_illustration_img:
+      type: string
+      description: Light theme cover illustration image path.
+      completion:
+        type: file
+    cover_illustration_img_darkbg:
+      type: string
+      description: Dark theme cover illustration image path.
+      completion:
+        type: file
+    table-header-bgcolor:
+      type: string
+      description: Default table header background color (RGB or hex).
+    table-body-bgcolor:
+      type: string
+      description: Default table body background color (RGB or hex).
+    table-header-txtcolor:
+      type: string
+      description: Default table header text color (RGB or hex).
+    table-body-txtcolor:
+      type: string
+      description: Default table body text color (RGB or hex).
+    table-border-color:
+      type: string
+      description: Default table border color (RGB or hex).
+    table-border-width:
+      type: number
+      description: Default table border width in points.
+    table-cell-padding:
+      type: number
+      description: Default table cell padding in points.
+    table-alignment:
+      type: string
+      enum: [left, center, right]
+      description: Default table alignment.
+
+options:
+  data_classification_label:
+    type: object
+    description: Data classification label settings for PDF output.
+    properties:
+      level:
+        type: string
+        description: Selected classification level key.
+      levels:
+        type: object
+        description: Map of level definitions with txt, bgcolor, and txtcolor.
+      width:
+        type: string
+        description: Label width (for example 35mm).
+      height:
+        type: string
+        description: Label height (for example 8mm).
+      top:
+        type: string
+        description: Distance from top page edge.
+      left:
+        type: string
+        description: Distance from left page edge.
+      txtsize:
+        type: string
+        enum: [tiny, scriptsize, footnotesize, small, normalsize, large]
+        description: Label text size.
+      border-radius:
+        type: string
+        description: Label corner radius (for example 3pt).
