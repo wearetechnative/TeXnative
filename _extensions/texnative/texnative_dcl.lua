@@ -112,6 +112,12 @@ function Meta(meta)
     return meta
   end
 
+  -- Support simple 'data_classification_level' property to override level
+  -- This allows: -M data_classification_level="confidential" instead of -M data_classification_label.level="confidential"
+  if meta.data_classification_level ~= nil then
+    dcl.level = meta.data_classification_level
+  end
+
   -- Validate configuration
   local valid, err = M.validate_config(dcl)
   if not valid then
